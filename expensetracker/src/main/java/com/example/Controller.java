@@ -319,8 +319,6 @@ public class Controller {
 
     //Sidebar
 
-
-
     @FXML
     void switchColorBlack(MouseEvent event) {   
         Node sourceNode = (Node) event.getSource();
