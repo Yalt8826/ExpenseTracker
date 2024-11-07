@@ -757,7 +757,6 @@ public class Controller {
             dateContent.setFill(Color.web("#ecedec"));
     
             Text categoryHeading = new Text("Month: ");
-            categoryHeading.setFont(Font.font("Arial", FontWeight.BOLD, 14));
             categoryHeading.setFill(Color.web("#ecedec"));
     
             Text categoryContent = new Text(transaction.getCategory() + "\n");
