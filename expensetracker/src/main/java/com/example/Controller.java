@@ -86,8 +86,6 @@ public class Controller {
     }
 
 
-
-
     //~~~~~~~~~~~~~~~~~~~~~~~~~LOGIN SCENE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     @FXML
