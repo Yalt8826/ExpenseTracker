@@ -1,0 +1,108 @@
+.anchor-pane-curved {
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+.anchor-pane-curved1 {
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+.anchor-pane-transparent-grey {
+    -fx-background-color: #2d2c2c;
+    -fx-background-radius: 10px;
+}
+.root-node {
+    -fx-background-color: transparent;
+}
+.clip-node{
+    -fx-border-width: 0px;
+}
+.SideBarAnchor{
+    -fx-background-color:transparent;
+    -fx-border-width:0 1 1 0;
+    -fx-border-color: transparent grey transparent transparent;
+}
+.SBclip{
+    -fx-background-color:#202121;
+}
+.TitleBarButton:hover{
+    -fx-background-color:#2A2A2A;
+}
+.TitleBarButton{
+    -fx-background-color:#191818;
+}
+.title-text {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7), 10, 0.5, 0, 3);
+}
+.input-text {
+    -fx-font-family: "Helvetica", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-background-color: #a3a2a2;
+    -fx-padding: 5 10;
+    -fx-prompt-text-fill: #ecedec; 
+}
+
+.input-text:focused {
+    -fx-border-color: #191818;
+    -fx-border-width: 2;
+    -fx-border-radius:2;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2), 5, 0.5, 0, 1);
+}
+.button-text {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #191818;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    
+}
+.button-text:hover {
+    -fx-background-color: #1f1e1e;
+}
+.button-text:pressed{
+    -fx-effect: innershadow( gaussian , rgba(0,0,0,0.7), 5, 0.5, 0, 1);
+}
+.classic-title {
+    -fx-font-family: "Georgia", serif;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #444444;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.3, 2, 2);
+}
+.button-text-light{
+    -fx-background-color: #3c3b3b;
+}
+.button-text-light:hover{
+    -fx-background-color:#0d0c0c;
+}
+.heading-text {
+    -fx-font-size: 36px;          /* Large font size for the heading */
+    -fx-font-weight: bold;        /* Bold text */
+    -fx-text-fill: #333333;       /* Dark text color */
+    -fx-font-family: "Arial", sans-serif;  /* Font family */
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.3) , 5, 0.0 , 0 , 2 ); /* Subtle drop shadow */
+    -fx-padding: 10px 20px;       /* Padding around the text */
+    -fx-background-color: #f4f4f4; /* Light background color */
+    -fx-background-radius: 10px;  /* Rounded corners for background */
+    -fx-border-color: #CCCCCC;    /* Optional border */
+    -fx-border-radius: 10px;      /* Rounded border corners */
+    -fx-alignment: center;        /* Center-align the text */
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #ecedec;
+    -fx-fill: #ecedec;
+}
+
+.chart-pie-label { /*this is what you need for labels*/
+    -fx-fill: #ecedec;
+    -fx-font-size: 1em;
+} 
