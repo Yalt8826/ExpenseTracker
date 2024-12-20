@@ -105,4 +105,3 @@ public class SessionManager {
         return new int[]{totalExp,totalIn};
     }
 }
-
