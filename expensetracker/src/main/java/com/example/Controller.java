@@ -106,7 +106,6 @@ public class Controller {
     }
 
 
-
     //TITLE BAR BUTTONS
     
     @FXML
@@ -179,7 +178,7 @@ public class Controller {
             SessionManager.setSavingsTransactionList();
             SessionManager.setTotalOverview();
             LocalDate today = LocalDate.now();
-            if(today.getDayOfMonth()==today.lengthOfMonth())
+            //if(today.getDayOfMonth()==today.lengthOfMonth())
                 SessionManager.updateSavingsTransactionList();
 
 
@@ -674,7 +673,7 @@ public class Controller {
         incomeCategory.setText("");
         incomeAmt.setText("");
         SessionManager.setSavingsTransactionList();
-        new setTotalOverviewThread().join();
+        SessionManager.setTotalOverview();
         enterInTranshistTF();
         initializeincomePieChart();
     }
