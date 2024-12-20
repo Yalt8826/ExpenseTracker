@@ -1,12 +1,10 @@
 package com.example;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,7 +17,7 @@ public class SessionManager {
     private static List<TransactionObj> Transactions;
     private static List<TransactionObj> SavTransactions;
 
-    public static int totalExp,totalIn;
+    public static int totalExp=0,totalIn=0;
 
     public static void setCurrUser(UserObj user) {
         currUser = user;
@@ -86,45 +84,6 @@ public class SessionManager {
     }
 
     public static void setSavingsTransactionList() {
-
-        totalExp=0;
-        totalIn=0;
-        List<TransactionObj> exp1Transactions;
-        List<TransactionObj> in1Transactions;
-        LocalDate today = LocalDate.now();
-        int currentMonth = today.getMonthValue();
-        int currentYear = today.getYear();
-
-        exp1Transactions = expTransactions.stream()
-            .filter(transaction -> {
-                // Extract the date from the transaction and convert to LocalDate
-                LocalDate transactionDate = transaction.getTransdate().toInstant()
-                    .atZone(ZoneId.systemDefault()).toLocalDate();
-                // Check if month and year match the current month and year
-                return transactionDate.getMonthValue() == currentMonth && transactionDate.getYear() == currentYear;
-            })
-            .collect(Collectors.toList());
-
-        in1Transactions = inTransactions.stream()
-            .filter(transaction -> {
-                // Extract the date from the transaction and convert to LocalDate
-                LocalDate transactionDate = transaction.getTransdate().toInstant()
-                    .atZone(ZoneId.systemDefault()).toLocalDate();
-                // Check if month and year match the current month and year
-                return transactionDate.getMonthValue() == currentMonth && transactionDate.getYear() == currentYear;
-            })
-            .collect(Collectors.toList());
-
-        for(TransactionObj transaction : exp1Transactions )
-        {
-            totalExp+=transaction.getAmount();
-        }
-        for(TransactionObj transaction : in1Transactions )
-        {
-            totalIn+=transaction.getAmount();
-        }
-
-
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         TransactionDAO transactionDAO = new TransactionDAO(sessionFactory);
         SavTransactions = transactionDAO.getTransactions(currUser.id,2);
@@ -132,6 +91,14 @@ public class SessionManager {
 
     public static List<TransactionObj> getSavingsTransactionList() {
         return SavTransactions;
+    }
+
+    public static void setTotalOverview() {
+        for(TransactionObj x : expTransactions)
+            totalExp+=x.getAmount();
+
+        for(TransactionObj x : inTransactions)
+            totalIn+=x.getAmount();
     }
 
     public static int[] getTotalOverview() {

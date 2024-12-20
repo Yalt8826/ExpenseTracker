@@ -66,6 +66,46 @@ public class Controller {
 
     int i = 0;
 
+    //~~~~~~~~~~~~~~~~~THREADS~~~~~~~~~~~~~~~~~~~
+
+    class setCurrUserThread extends Thread {
+        public void run() {
+            SessionManager.setCurrUser(user);
+        }
+    }
+
+
+    class setExpTransactionListThread extends Thread {
+        public void run() {
+            SessionManager.setExpTransactionList();
+        }
+    }
+
+    class setInTransactionListThread extends Thread {
+        public void run() {
+            SessionManager.setInTransactionList();
+        }
+    }
+
+    class setTransactionListThread extends Thread {
+        public void run() {
+            SessionManager.setTransactionList();
+        }
+    }
+
+    class setSavingsTransactionListThread extends Thread {
+        public void run() {
+            SessionManager.setSavingsTransactionList();
+        }
+    }
+
+    class setTotalOverviewThreadThread extends Thread {
+        public void run() {
+            SessionManager.setTotalOverview();
+        }
+    }
+
+
 
     //TITLE BAR BUTTONS
     
@@ -111,12 +151,13 @@ public class Controller {
         }
     }
 
+    UserObj user = new UserObj();
 
+    
     @FXML
-    void userLogin(MouseEvent event) throws SQLException {
+    void userLogin(MouseEvent event) throws SQLException, InterruptedException {
 
         UserDAO userDAO = new UserDAO(sessionFactory);
-        UserObj user = new UserObj();
         user = userDAO.getUser(String.valueOf(lognamein.getText()));
         if(user==null)
         {
@@ -130,14 +171,18 @@ public class Controller {
             invalidLogin.setText("Logging in!!!");
             invalidLogin.setFill(Color.web("#ecedec"));
             invalidLogin.setVisible(true);
+
             SessionManager.setCurrUser(user);
             SessionManager.setExpTransactionList();
             SessionManager.setInTransactionList();
             SessionManager.setTransactionList();
             SessionManager.setSavingsTransactionList();
+            SessionManager.setTotalOverview();
             LocalDate today = LocalDate.now();
             if(today.getDayOfMonth()==today.lengthOfMonth())
                 SessionManager.updateSavingsTransactionList();
+
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/HomeScene.fxml"));
                 Parent root = loader.load();
@@ -522,7 +567,7 @@ public class Controller {
     private TextField expCategoryin;
 
     @FXML
-    void insertTransaction(MouseEvent event) {
+    void insertTransaction(MouseEvent event) throws InterruptedException {
         UserObj user = SessionManager.getCurrUser();
         TransactionDAO transactionDAO = new TransactionDAO(sessionFactory);
         TransactionObj newTransaction = new TransactionObj();
@@ -616,7 +661,6 @@ public class Controller {
 
     @FXML
     void addIncomeAmt(MouseEvent event) {
-        System.out.println("\n\n\n\nIN THE RIGHT FUNCTION");
         UserObj user = SessionManager.getCurrUser();
         TransactionDAO transactionDAO = new TransactionDAO(sessionFactory);
         TransactionObj newTransaction = new TransactionObj();
@@ -630,6 +674,7 @@ public class Controller {
         incomeCategory.setText("");
         incomeAmt.setText("");
         SessionManager.setSavingsTransactionList();
+        new setTotalOverviewThread().join();
         enterInTranshistTF();
         initializeincomePieChart();
     }
@@ -786,8 +831,10 @@ public class Controller {
         Map<String, Double> categoryTotals = new HashMap<>();
 
 
-        categoryTotals.put("Expense",(double) SessionManager.totalExp);
-        categoryTotals.put("Savings",(double) SessionManager.totalIn);
+        categoryTotals.put("Expense",(double) total[0]);
+        categoryTotals.put("Savings",(double) (total[1]-total[0]));
+
+        System.out.println("\n\n\n\nEXPENSE : "+total[0]+"\nSAVINGS : "+(total[1]-total[0])+"\n\n\n\n");
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
         for (Map.Entry<String, Double> entry : categoryTotals.entrySet()) {

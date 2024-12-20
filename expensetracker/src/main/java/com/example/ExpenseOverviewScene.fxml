@@ -29,12 +29,12 @@
       </AnchorPane>
       <AnchorPane layoutX="25.0" layoutY="170.0" prefHeight="710.0" prefWidth="594.0" styleClass="anchor-pane-transparent-grey" stylesheets="@styles.css">
          <children>
-            <PieChart fx:id="expOverviewPiechart" layoutX="47.0" layoutY="155.0" />
             <Text fill="#ecedec" layoutX="4.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22;" styleClass="classic-title" text="Expenses vs Savings Chart" textAlignment="CENTER" wrappingWidth="594.0">
                <font>
                   <Font size="22.0" />
                </font>
             </Text>
+            <PieChart fx:id="expOverviewPiechart" layoutX="51.0" layoutY="155.0" />
          </children></AnchorPane>
       <AnchorPane fx:id="SideBar" layoutX="-302.0" layoutY="33.0" prefHeight="947.0" prefWidth="301.0" styleClass="SideBarAnchor" stylesheets="@styles.css">
          <children>
