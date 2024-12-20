@@ -56,7 +56,13 @@ public class Controller {
     private Text welcomeUserText;
 
     SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+
+
     //~~~~~~~~~~~~INITAILIZE~~~~~~~~~~~~~~~~~~
+
+
+    
     @FXML
     public void initialize() {
         enterTranshistTF();
@@ -66,7 +72,11 @@ public class Controller {
 
     int i = 0;
 
+
+
     //~~~~~~~~~~~~~~~~~THREADS~~~~~~~~~~~~~~~~~~~
+
+
 
     class setCurrUserThread extends Thread {
         public void run() {
@@ -106,8 +116,11 @@ public class Controller {
     }
 
 
+
     //TITLE BAR BUTTONS
     
+
+
     @FXML
     private void closeWindow(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); 
@@ -125,7 +138,10 @@ public class Controller {
     }
 
 
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~LOGIN SCENE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
     @FXML
     private Text invalidLogin;
@@ -211,6 +227,7 @@ public class Controller {
 
 
     //~~~~~~~~~~~~~~~~~~REGISTER SCENE~~~~~~~~~~~~~~~~~~~
+
 
 
     @FXML
@@ -361,6 +378,8 @@ public class Controller {
 
     //Sidebar
 
+
+
     @FXML
     void switchColorBlack(MouseEvent event) {   
         Node sourceNode = (Node) event.getSource();
@@ -487,7 +506,9 @@ public class Controller {
     //~~~~~~~~~~~~~~~~~~~~EXPENSES OVERVIEW~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+
     //Pie Chart
+
 
     @FXML
     private PieChart homePieChart;
@@ -555,9 +576,14 @@ public class Controller {
         }
     }
 
+
+
     //~~~~~~~~~~~~~~~~~TRANSACTION SCENE~~~~~~~~~~~~~~~~~~~~~~
 
+
+
     //Insert New Transaction
+
 
     @FXML
     private TextField expAmtin;
@@ -584,9 +610,11 @@ public class Controller {
         enterTranshistTF();
     }
 
-    
+
 
     //Transaction History
+
+
 
     @FXML
     private TextFlow transhistTF;
@@ -760,7 +788,9 @@ public class Controller {
     }   
 
 
+
     //~~~~~~~~~~~~~~EXPENSE OVERVIEW~~~~~~~~~~~~~~~~~~~~
+
 
 
     @FXML
